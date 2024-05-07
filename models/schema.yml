@@ -8,9 +8,51 @@ sources:
       - name: sales
         identifier: raw_gz_sales
         description: Greenweez sales
+        columns:
+          - name: date_date
+          - name: CONCAT(orders_id,"_",pdt_id)
+            tests:
+              - unique
+              - not_null
+          - name: orders_id
+          - name: products_id
+          - name: revenue
+          - name: quantity
+        freshness: 
+          warn_after: {count: 90,period: day}
+        loaded_at_field: "CAST(date_date as TIMESTAMP)"
       - name: product
         identifier: raw_gz_product
         description: Greenweez product
+        columns:
+          - name: products_id
+            tests:
+              - unique
+              - not_null
+          - name: purchase_price
       - name: ship
         identifier: raw_gz_ship
         description: Greenweez ship
+        columns:
+          - name: orders_id
+            tests:
+              - unique
+              - not_null
+          - name: shipping_fee
+          - name: logcost
+          - name: ship_cost
+models:
+  - name: int_sales_margin
+    tests:
+      - not_null:
+          column_name:
+             - orders_id
+             - products_id
+             - revenue
+             - quantity
+             - purchase_price
+             - purchase_cost
+             - margin
+  - name: int_orders_margin
+  - name: int_orders_operational
+  - name: finance_days
