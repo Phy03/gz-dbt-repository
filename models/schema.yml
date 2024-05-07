@@ -41,3 +41,18 @@ sources:
           - name: shipping_fee
           - name: logcost
           - name: ship_cost
+models:
+  - name: int_sales_margin
+    tests:
+      - not_null:
+          column_name:
+             - orders_id
+             - products_id
+             - revenue
+             - quantity
+             - purchase_price
+             - purchase_cost
+             - margin
+  - name: int_orders_margin
+  - name: int_orders_operational
+  - name: finance_days
