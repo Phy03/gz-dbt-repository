@@ -8,9 +8,33 @@ sources:
       - name: sales
         identifier: raw_gz_sales
         description: Greenweez sales
+        columns:
+          - name: date_date
+          - name: primary_key
+            tests:
+              - unique
+              - not_null
+          - name: orders_id
+          - name: products_id
+          - name: revenue
+          - name: quantity
       - name: product
         identifier: raw_gz_product
         description: Greenweez product
+        columns:
+          - name: products_id
+            tests:
+              - unique
+              - not_null
+          - name: purchase_price
       - name: ship
         identifier: raw_gz_ship
         description: Greenweez ship
+        columns:
+          - name: orders_id
+            tests:
+              - unique
+              - not_null
+          - name: shipping_fee
+          - name: logcost
+          - name: ship_cost
