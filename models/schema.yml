@@ -64,3 +64,7 @@ models:
   - name: int_orders_margin
   - name: int_orders_operational
   - name: finance_days
+  - name: int_campaigns
+    tests:
+      - unique:
+          column_name: (date_date || "_" || campaign_key)
