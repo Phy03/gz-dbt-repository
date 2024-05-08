@@ -41,6 +41,14 @@ sources:
           - name: shipping_fee
           - name: logcost
           - name: ship_cost
+      - name: adwords
+        identifier: raw_gz_adwords
+      - name: criteo
+        identifier: raw_gz_criteo
+      - name: facebook
+        identifier: raw_gz_facebook
+      - name: bing
+        identifier: raw_gz_bing
 models:
   - name: int_sales_margin
     tests:
